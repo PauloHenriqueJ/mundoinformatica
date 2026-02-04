@@ -1,0 +1,223 @@
+.header {
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(15, 23, 42, 0.9); // Fundo escuro azulado
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15); // Borda azul muito sutil
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(15, 23, 42, 0.85) 100%
+    );
+    z-index: -1;
+  }
+}
+
+.fixed {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(56, 189, 248, 0.1);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(56, 189, 248, 0.2);
+
+  &::before {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.98) 0%,
+      rgba(15, 23, 42, 0.92) 100%
+    );
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px; // Um pouco mais alto
+}
+
+.contentLogo {
+  display: none;
+
+  a {
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 1.75rem;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #3b82f6);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: #38bdf8;
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+
+    span {
+      background: linear-gradient(90deg, #38bdf8, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+
+  a {
+    font-weight: 600;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.1),
+        transparent
+      );
+      transition: left 0.7s;
+    }
+
+    &:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: #ffffff;
+      transform: translateY(-2px);
+
+      &::before {
+        left: 100%;
+      }
+    }
+
+    // Indicador ativo
+    &.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
+    }
+
+    // Para a home page ou seção ativa
+    &[href="/"]:hover,
+    &[href="#servicos"]:hover,
+    &[href="#contatos"]:hover {
+      color: #38bdf8;
+    }
+  }
+}
+
+// Responsividade
+@media (min-width: 640px) {
+  .contentLogo {
+    display: flex;
+  }
+
+  .nav {
+    gap: 8px;
+
+    a {
+      padding: 10px 24px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    height: 80px;
+  }
+
+  .contentLogo {
+    a {
+      font-size: 2rem;
+    }
+  }
+
+  .nav {
+    gap: 16px;
+
+    a {
+      padding: 12px 28px;
+      font-size: 1.05rem;
+    }
+  }
+}
+
+// Animação de entrada suave
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  animation: slideDown 0.5s ease-out;
+}

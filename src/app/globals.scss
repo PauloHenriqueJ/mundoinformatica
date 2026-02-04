@@ -1,0 +1,74 @@
+// Definição de variáveis
+$background-color: #0d0d0d; // preto suave
+$primary-color: #4da6ff; // azul claro
+$secondary-color: #1a75ff; // azul mais forte
+$text-color: #e6f2ff; // quase branco azulado
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: $background-color;
+  color: $text-color;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+// Links
+a {
+  text-decoration: none;
+  color: $primary-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+// Botões
+button {
+  cursor: pointer;
+  border: none;
+  background: $primary-color;
+  color: $background-color;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: $secondary-color;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Cabeçalhos
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary-color;
+  margin-bottom: 0.8rem;
+}
+
+// Container padrão
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}

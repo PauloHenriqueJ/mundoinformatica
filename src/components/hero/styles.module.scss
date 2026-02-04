@@ -1,0 +1,244 @@
+.main {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.containerHero {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.textContainer {
+  background: rgba(10, 10, 10, 0.75); // Reduzi a opacidade
+  backdrop-filter: blur(4px); // Diminuí bastante o blur
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(56, 189, 248, 0.15); // Borda mais sutil
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(56, 189, 248, 0.08);
+  text-align: center;
+  max-width: 800px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+
+  span {
+    display: block;
+    background: linear-gradient(90deg, #38bdf8, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  border-radius: 12px;
+  padding: 0.875rem 2rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.contentBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  // Overlay MUITO mais sutil - quase transparente
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 10, 10, 0.4) 0%,
+      // Muito mais claro
+      rgba(10, 10, 10, 0.2) 50%,
+      // Quase transparente
+      rgba(10, 10, 10, 0.4) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+.banner {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  // Efeito MUITO sutil na imagem
+  filter: brightness(0.9); // Apenas um toque sutil
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+// Efeitos de brilho MUITO sutis
+.glowEffect {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.05) 0%,
+    transparent 70%
+  );
+  filter: blur(20px); // Blur bem reduzido
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5; // Muito mais transparente
+
+  &:first-child {
+    top: 15%;
+    left: 15%;
+  }
+
+  &:last-child {
+    bottom: 15%;
+    right: 15%;
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .main {
+    min-height: 90vh;
+  }
+
+  .textContainer {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+    backdrop-filter: blur(1px); // Blur mínimo em mobile
+    background: rgba(10, 10, 10, 0.452); // Um pouco mais opaco em mobile
+  }
+
+  .title {
+    font-size: 10px;
+  }
+
+  .link {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  .contentBanner::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 10, 10, 0.384) 0%,
+      rgba(10, 10, 10, 0.384) 50%,
+      rgba(10, 10, 10, 0.5) 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .textContainer {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .link {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .glowEffect {
+    display: none; // Remove efeitos em telas muito pequenas
+  }
+}

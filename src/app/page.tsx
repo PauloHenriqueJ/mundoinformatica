@@ -14,6 +14,7 @@ export default async function Home() {
 
   return (
     <main>
+      {menu.objects.length > 0 && <Submenu menu={menu} />}
       <Hero
         heading={objet.object.metadata.heading}
         buttonTitle={objet.object.metadata.cta_button.title}

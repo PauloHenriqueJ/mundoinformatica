@@ -18,7 +18,7 @@ export async function getDataHome() {
 export async function getSubMenu() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/objects/69833b36c0bea08f7ec9e891?pretty=true&read_key=${process.env.READ_KEY}&props=slug,title,metadata,type,`,
+      `${process.env.NEXT_PUBLIC_API_URL}/objects?pretty=true&query=%7B%22type%22:%22pages%22%7D&limit=10&skip=0&read_key=${process.env.READ_KEY}&props=slug,title,metadata,type`,
       { next: { revalidate: 120 } },
     );
 

@@ -40,7 +40,7 @@ export async function getItemBySlug(itemSlug: string) {
     query: JSON.stringify({
       slug: itemSlug,
     }),
-    props: "slug,title,content,metadata ,type",
+    props: "slug,title,content,metadata",
     read_key: process.env.READ_KEY as string,
   });
 

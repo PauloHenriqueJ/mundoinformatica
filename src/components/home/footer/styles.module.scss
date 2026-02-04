@@ -197,20 +197,26 @@
 }
 
 .copyText {
-  margin-top: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  margin-top: 0;
   color: #9ca3af;
   font-size: 0.875rem;
   text-align: center;
-  padding: 0 20px;
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
-
-  strong {
-    color: #38bdf8;
-    font-weight: 600;
-  }
+  background-color: black; /* Opcional, para evitar sobreposição */
 }
 
+.copyText strong {
+  color: #38bdf8;
+  font-weight: 600;
+}
 // Responsividade
 @media (min-width: 640px) {
   .content {
